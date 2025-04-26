@@ -19,6 +19,16 @@
             color: #fff;
             overflow-x: hidden;
         }
+
+        /* --- أنيميشن للظهور --- */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
         
         .header {
             position: fixed;
@@ -58,7 +68,7 @@
             display: none;
             cursor: pointer;
             color: #d4af37;
-            font-size: 24px;
+            font-size: 28px;
         }
         
         .hero {
@@ -73,10 +83,9 @@
         
         .hero-content {
             text-align: center;
-            padding: 0 20px;
+            padding: 50px;
             max-width: 900px;
             background-color: rgba(0, 0, 0, 0.7);
-            padding: 50px;
             border-radius: 10px;
         }
         
@@ -114,8 +123,8 @@
         
         .hero-btn:hover {
             background: #fff;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
         }
         
         .about {
@@ -168,7 +177,8 @@
         .footer-text {
             color: #777;
         }
-        
+
+        /* --- تصميم خاص للجوال --- */
         @media (max-width: 768px) {
             .header {
                 padding: 20px;
@@ -176,14 +186,14 @@
             
             .nav-links {
                 display: none;
+                flex-direction: column;
                 position: absolute;
-                top: 90px;
-                left: 0;
-                width: 100%;
+                top: 80px;
+                right: 20px;
                 background: rgba(0, 0, 0, 0.9);
                 padding: 20px;
-                flex-direction: column;
-                align-items: center;
+                border-radius: 10px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             }
             
             .nav-links.active {
@@ -213,8 +223,9 @@
     </style>
 </head>
 <body>
+
     <header class="header">
-        <img src="ATHR.jpg" alt="ATHR Perfumes Logo" class="logo">
+        <img src="ATHR.jpg" alt="ATHR Perfumes Logo" class="logo fade-in">
         <nav>
             <div class="nav-links">
                 <a href="#">الرئيسية</a>
@@ -226,8 +237,8 @@
             <div class="hamburger">☰</div>
         </nav>
     </header>
-    
-    <section class="hero">
+
+    <section class="hero fade-in">
         <div class="hero-content">
             <img src="ATHR.jpg" alt="ATHR Logo" class="hero-logo">
             <h1 class="hero-title">تسوق، اترك أثراً</h1>
@@ -235,13 +246,15 @@
             <a href="#" class="hero-btn">ابدأ رحلتك في عالم أثر</a>
         </div>
     </section>
-    
-    <section class="about">
+
+    <section class="about fade-in">
         <h2 class="about-title">عن أثر</h2>
-        <p class="about-text">أثر للعطور، علامة تجارية فاخرة تجمع بين أصالة الشرق وإبداع الغرب. نقدم مجموعة متنوعة من العطور المميزة التي تم تصميمها لتترك أثراً في كل مكان تذهب إليه. تمتاز عطورنا بالجودة العالية والتركيبة الفريدة من الروائح الطبيعية النقية، مما يمنحها ثباتاً ودواماً يفوق التوقعات.</p>
+        <p class="about-text">
+            أثر للعطور، علامة تجارية فاخرة تجمع بين أصالة الشرق وإبداع الغرب. نقدم مجموعة متنوعة من العطور المميزة التي تم تصميمها لتترك أثراً في كل مكان تذهب إليه. تمتاز عطورنا بالجودة العالية والتركيبة الفريدة من الروائح الطبيعية النقية، مما يمنحها ثباتاً ودواماً يفوق التوقعات.
+        </p>
     </section>
-    
-    <footer class="footer">
+
+    <footer class="footer fade-in">
         <img src="ATHR.jpg" alt="ATHR Logo" class="footer-logo">
         <div class="footer-links">
             <a href="#">سياسة الشحن</a>
@@ -249,10 +262,13 @@
         </div>
         <p class="footer-text">© ٢٠٢٥ أثر للعطور. جميع الحقوق محفوظة</p>
     </footer>
-    
+
     <script>
-        document.querySelector('.hamburger').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
     </script>
 </body>
